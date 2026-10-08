@@ -188,6 +188,7 @@ new fullpage('#fullpage', {
     onLeave: function (origin, destination, direction) {
         
         if (window.innerWidth <= 992 || document.documentElement.classList.contains('fp-responsive')) {
+            resetAnimations();
             return;
         }
 
@@ -232,7 +233,9 @@ new fullpage('#fullpage', {
     },
     onSlideLeave: function (section, origin, destination, direction) {
         if (window.innerWidth <= 992 || document.documentElement.classList.contains('fp-responsive')) {
+             resetAnimations();
             return;
+            
         }
         resetAnimations();
         if (section.index === 3) {

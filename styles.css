@@ -629,7 +629,7 @@ div.fp-watermark {
     align-items: center;
     width: 100%;
     height: 100dvh;
-    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("/assets/images/background2.png");
+    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background2.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1645,6 +1645,7 @@ div.fp-watermark {
 }
 
 @media(max-width: 64rem) {
+    
     .heroContent span {
         font-size: 2.4375rem;
         letter-spacing: -0.5rem;
@@ -1801,6 +1802,16 @@ div.fp-watermark {
         animation: none !important;
 
     }
+    #hero,
+    #about,
+    #skills,
+    #projects,
+    #contact {
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
 
     .heroContent,
@@ -1866,7 +1877,38 @@ div.fp-watermark {
 }
 
 
-@media (max-width: 48rem) {
+@media (max-width: 50rem) {
+    #hero,
+    #about,
+    #skills,
+    #projects,
+    #contact {
+        height: auto !important;
+        min-height: 100dvh;
+    }
+
+   
+    #hero,
+    #about,
+    #skills,
+    #projects,
+    #contact {
+        height: auto !important;
+        min-height: 100dvh;          
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    
+    .hero::before,
+    .about::before,
+    .skills::before,
+    #projects::before,
+    #contact::before {
+        height: 100%;                
+    }
+
     .navHeader {
         padding: 0.5rem;
     }
@@ -1981,8 +2023,8 @@ div.fp-watermark {
         gap: 1rem;
     }
     .slide1{
-        width: 768px;
-        height: 608px;
+        width: 48rem;
+        height: 38rem;
     }
 
     .slide1 span {
