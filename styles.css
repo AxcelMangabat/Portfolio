@@ -129,7 +129,7 @@ div.fp-watermark {
     align-items: center;
     width: 100%;
     height: 100dvh;
-    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("/assets/images/backgroundPrime.png");
+    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/backgroundPrime.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -408,7 +408,7 @@ div.fp-watermark {
     width: 100%;
     height: 100dvh;
     z-index: 1;
-    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("/assets/images/background.png");
+    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -935,7 +935,7 @@ div.fp-watermark {
     align-items: center;
     width: 100%;
     height: 100dvh;
-    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("/assets/images/background.png");
+    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1440,7 +1440,7 @@ div.fp-watermark {
     align-items: center;
     width: 100%;
     height: 100dvh;
-    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("/assets/images/background2.png");
+    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background2.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
