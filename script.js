@@ -274,7 +274,7 @@ new fullpage('#fullpage', {
 
 (function () {
     const CONFIG = {
-        textureUrl: '/assets/images/earthmap1k.jpg',
+        textureUrl: './assets/images/earthmap1k.jpg',
         autoRotateSpeed: -0.15,
         lightIntensity: 1.1,
         ambientIntensity: 0.25,
