@@ -2236,7 +2236,7 @@ div.fp-watermark {
 
     #about {
         padding: 50px 0;
-        height: 53rem !important;
+        height: 40rem !important;
     }
 
     #about .fp-overflow {
@@ -2285,8 +2285,7 @@ div.fp-watermark {
     }
 
     #skills {
-        padding: 50px 0;
-        height: 74rem !important;
+        height: 48rem !important;
     }
 
     .experience {
@@ -2422,7 +2421,7 @@ div.fp-watermark {
 
 
     #contact .fp-overflow {
-        justify-content: end !important;
+        justify-content: start !important;
         flex-direction: column-reverse !important;
         overflow-x: hidden;
         margin: 0 0 0 1rem;
@@ -2431,7 +2430,7 @@ div.fp-watermark {
 
     #contact {
         padding: 50px 0;
-        height: 52.875rem !important;
+        height: 50rem !important;
     }
 
     .contactInfo{
