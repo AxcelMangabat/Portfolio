@@ -2426,6 +2426,7 @@ div.fp-watermark {
         flex-direction: column-reverse !important;
         overflow-x: hidden;
         margin: 0 0 0 1rem;
+        padding: 0 1rem;
     }
 
     #contact {
