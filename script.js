@@ -1,50 +1,67 @@
 const navScroll = document.querySelector(".navScroll");
-const navLinks = navScroll.querySelectorAll("a");
+let inProjects = false;
 
-navLinks.forEach((link, index) => {
-    link.addEventListener("click", () => {
-        navScroll.classList.remove(
-            "hovertonav1",
-            "hovertonav2",
-            "hovertonav3",
-            "hovertonav4",
-            "hovertonav5"
-        );
+if (navScroll) {
+    const navLinks = navScroll.querySelectorAll("a");
 
-        navScroll.classList.add(`hovertonav${index + 1}`);
+    navLinks.forEach((link, index) => {
+        link.addEventListener("click", () => {
+            navScroll.classList.remove(
+                "hovertonav1",
+                "hovertonav2",
+                "hovertonav3",
+                "hovertonav4",
+                "hovertonav5"
+            );
+
+            navScroll.classList.add(`hovertonav${index + 1}`);
+        });
     });
-});
+}
 
+
+const setTransform = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.style.transform = value;
+};
+
+const addClassTo = (selector, ...classes) => {
+    const element = document.querySelector(selector);
+    if (element) element.classList.add(...classes);
+};
+
+const removeClassFrom = (selector, ...classes) => {
+    const element = document.querySelector(selector);
+    if (element) element.classList.remove(...classes);
+};
 
 const sectionAnimations = {
-
-
     "0-1-down": () => {
-        document.querySelector('.heroContent').style.transform = "translateY(-400px)";
-        document.querySelector('.Workstation').style.transform = "translateY(-400px)";
-        document.querySelector('.purpleromb1').classList.add('moveUp');
+        setTransform('.heroContent', 'translateY(-400px)');
+        setTransform('.Workstation', 'translateY(-400px)');
+        addClassTo('.purpleromb1', 'moveUp');
 
-        document.querySelector('.aboutme').classList.add('fadeUp');
-        document.querySelector('.aboutinfo').classList.add('fadeUp');
+        addClassTo('.aboutme', 'fadeUp');
+        addClassTo('.aboutinfo', 'fadeUp');
     },
 
     "1-0-up": () => {
-        document.querySelector('.aboutme').classList.add('fadeDown');
-        document.querySelector('.aboutinfo').classList.add('fadeDown');
-        document.querySelector('.darkcube2').classList.add('ObjDown');
-        document.querySelector('.purpleromb2').classList.add('moveUpr2');
+        addClassTo('.aboutme', 'fadeDown');
+        addClassTo('.aboutinfo', 'fadeDown');
+        addClassTo('.darkcube2', 'ObjDown');
+        addClassTo('.purpleromb2', 'moveUpr2');
 
-        document.querySelector('.heroContent').style.transform = "translateY(0px)";
-        document.querySelector('.Workstation').style.transform = "translateY(0px)";
-        document.querySelector('.purpleromb1').classList.remove('moveUp');
+        setTransform('.heroContent', 'translateY(0px)');
+        setTransform('.Workstation', 'translateY(0px)');
+        removeClassFrom('.purpleromb1', 'moveUp');
     },
 
     "1-2-down": () => {
-        document.querySelector('.aboutme').classList.add('fadeDown2');
-        document.querySelector('.aboutinfo').classList.add('fadeDown2');
-        document.querySelector('.darkcube2').classList.add('ObjDown2');
+        addClassTo('.aboutme', 'fadeDown2');
+        addClassTo('.aboutinfo', 'fadeDown2');
+        addClassTo('.darkcube2', 'ObjDown2');
 
-        document.querySelector('.experience').classList.add('expFadeUp');
+        addClassTo('.experience', 'expFadeUp');
 
         document.querySelectorAll('.skillIcons').forEach(el => {
             void el.offsetWidth;
@@ -53,10 +70,10 @@ const sectionAnimations = {
     },
 
     "2-1-up": () => {
-        document.querySelector('.aboutme').classList.add('fadeUp2');
-        document.querySelector('.aboutinfo').classList.add('fadeUp2');
+        addClassTo('.aboutme', 'fadeUp2');
+        addClassTo('.aboutinfo', 'fadeUp2');
 
-        document.querySelector('.experience').classList.add('expFade');
+        addClassTo('.experience', 'expFade');
         document.querySelectorAll('.skillIcons').forEach(el => {
             void el.offsetWidth;
             el.classList.add('iconFade');
@@ -67,20 +84,17 @@ const sectionAnimations = {
         document.querySelectorAll('.skillIcons').forEach(el => {
             el.classList.add('iconUp2');
         });
-        document.querySelector('.experience').classList.add('expFadeUp2');
+        addClassTo('.experience', 'expFadeUp2');
 
-        document.querySelector('.slide1 h1').classList.add('slide1Enter');
-        document.querySelector('.slide1 p').classList.add('slide1Enter');
-        document.querySelector('.slide1 a').classList.add('slide1Enter');
-
+        addClassTo('.slide1 h1', 'slide1Enter');
+        addClassTo('.slide1 p', 'slide1Enter');
+        addClassTo('.slide1 a', 'slide1Enter');
     },
 
     "3-2-up": () => {
-
-        document.querySelector('.slide1 h1').classList.add('slide1Leave2');
-        document.querySelector('.slide1 p').classList.add('slide1Leave2');
-        document.querySelector('.slide1 a').classList.add('slide1Leave2');
-
+        addClassTo('.slide1 h1', 'slide1Leave2');
+        addClassTo('.slide1 p', 'slide1Leave2');
+        addClassTo('.slide1 a', 'slide1Leave2');
 
         document.querySelectorAll('.skillIcons').forEach(el => {
             void el.offsetWidth;
@@ -88,80 +102,81 @@ const sectionAnimations = {
         });
     },
     "3-4-down": () => {
-        document.querySelector('.slide1 h1').classList.add('slide1Leave');
-        document.querySelector('.slide1 p').classList.add('slide1Leave');
-        document.querySelector('.slide1 a').classList.add('slide1Leave');
-        document.querySelector('.darkromb').classList.add('Objslide2Left');
-        document.querySelector('.darkcube1').classList.add('Objslide2Left');
-        document.querySelector('.earthcon').classList.add('earthAppear');
-        document.querySelector('.contactInfo').classList.add('conEnter');
+        addClassTo('.slide1 h1', 'slide1Leave');
+        addClassTo('.slide1 p', 'slide1Leave');
+        addClassTo('.slide1 a', 'slide1Leave');
+        addClassTo('.darkromb', 'Objslide2Left');
+        addClassTo('.darkcube1', 'Objslide2Left');
+        addClassTo('.earthcon', 'earthAppear');
+        addClassTo('.contactInfo', 'conEnter');
     },
     "4-3-up": () => {
-        document.querySelector('.slide1 h1').classList.add('slide1Again');
-        document.querySelector('.slide1 p').classList.add('slide1Again');
-        document.querySelector('.slide1 a').classList.add('slide1Again');
-        document.querySelector('.darkromb').classList.add('Objslide2romb');
-        document.querySelector('.earthcon').classList.add('earthDown');
-        document.querySelector('.contactInfo').classList.add('conUpward');
-        document.querySelector('.whitecube1').classList.add('Objwhite');
+        addClassTo('.slide1 h1', 'slide1Again');
+        addClassTo('.slide1 p', 'slide1Again');
+        addClassTo('.slide1 a', 'slide1Again');
+        addClassTo('.darkromb', 'Objslide2romb');
+        addClassTo('.earthcon', 'earthDown');
+        addClassTo('.contactInfo', 'conUpward');
+        addClassTo('.whitecube1', 'Objwhite');
     },
     "4-1-up": () => {
-        document.querySelector('.slide1 h1').classList.add('slide1Again');
-        document.querySelector('.slide1 p').classList.add('slide1Again');
-        document.querySelector('.slide1 a').classList.add('slide1Again');
-        document.querySelector('.darkromb').classList.add('Objslide2romb');
-        document.querySelector('.earthcon').classList.add('earthDown');
-        document.querySelector('.contactInfo').classList.add('conUpward');
-        document.querySelector('.whitecube1').classList.add('Objwhite');
-
+        addClassTo('.slide1 h1', 'slide1Again');
+        addClassTo('.slide1 p', 'slide1Again');
+        addClassTo('.slide1 a', 'slide1Again');
+        addClassTo('.darkromb', 'Objslide2romb');
+        addClassTo('.earthcon', 'earthDown');
+        addClassTo('.contactInfo', 'conUpward');
+        addClassTo('.whitecube1', 'Objwhite');
     }
-
-
 };
 
 
 
 function resetAnimations() {
+    const aboutMe = document.querySelector('.aboutme');
+    const aboutInfo = document.querySelector('.aboutinfo');
+    const darkCube2 = document.querySelector('.darkcube2');
+    const purpleRomb2 = document.querySelector('.purpleromb2');
+    const experience = document.querySelector('.experience');
+    const slideHeading = document.querySelector('.slide1 h1');
+    const slideParagraph = document.querySelector('.slide1 p');
+    const slideLink = document.querySelector('.slide1 a');
+    const sphereSm = document.querySelector('.sphereSm');
+    const sphereMd = document.querySelector('.sphereMd');
+    const sphereLg = document.querySelector('.sphereLg');
+    const con1 = document.querySelector('.con1');
+    const con2 = document.querySelector('.con2');
+    const msLogo = document.querySelector('.MsLogo');
+    const darkRomb = document.querySelector('.darkromb');
+    const darkCube1 = document.querySelector('.darkcube1');
+    const earthCon = document.querySelector('.earthcon');
+    const contactInfo = document.querySelector('.contactInfo');
+    const whiteCube1 = document.querySelector('.whitecube1');
 
-    document.querySelector('.aboutme')?.classList.remove(
-        'fadeUp', 'fadeDown', 'fadeUp2', 'fadeDown2'
-    );
-    document.querySelector('.aboutinfo')?.classList.remove(
-        'fadeUp', 'fadeDown', 'fadeUp2', 'fadeDown2'
-    );
-    document.querySelector('.darkcube2')?.classList.remove('ObjDown', 'ObjDown2');
-    document.querySelector('.purpleromb2')?.classList.remove('moveUpr2');
+    aboutMe?.classList.remove('fadeUp', 'fadeDown', 'fadeUp2', 'fadeDown2');
+    aboutInfo?.classList.remove('fadeUp', 'fadeDown', 'fadeUp2', 'fadeDown2');
+    darkCube2?.classList.remove('ObjDown', 'ObjDown2');
+    purpleRomb2?.classList.remove('moveUpr2');
 
-    document.querySelector('.experience')?.classList.remove(
-        'expFadeUp', 'expFade', 'expFadeUp2'
-    );
+    experience?.classList.remove('expFadeUp', 'expFade', 'expFadeUp2');
     document.querySelectorAll('.skillIcons').forEach(el => {
         el.classList.remove('iconUp', 'iconFade', 'iconUp2', 'iconFadeIn');
     });
-    document.querySelector('.slide1 h1').classList.remove('slide1Enter', 'slide1Leave', 'slide1Again', 'slide1Left', 'slide1Right', 'slide1Leave2');
-    document.querySelector('.slide1 p').classList.remove('slide1Enter', 'slide1Leave', 'slide1Again', 'slide1Left', 'slide1Right', 'slide1Leave2');
-    document.querySelector('.slide1 a').classList.remove('slide1Enter', 'slide1Leave', 'slide1Again', 'slide1Left', 'slide1Right', 'slide1Leave2');
-    document.querySelector('.sphereSm').classList.remove('ballsLeft');
-    document.querySelector('.sphereMd').classList.remove('ballsLeft');
-    document.querySelector('.sphereLg').classList.remove('ballsLeft');
-    document.querySelector('.con1').classList.remove('slide2Right');
-    document.querySelector('.con2').classList.remove('slide2Right');
-    document.querySelector('.MsLogo').classList.remove('LogoRight');
-    document.querySelector('.darkromb').classList.remove('Objslide2Left');
-    document.querySelector('.darkcube1').classList.remove('Objslide2Left');
-    document.querySelector('.con1').classList.remove('slide2Left');
-    document.querySelector('.con2').classList.remove('slide2Left');
-    document.querySelector('.darkromb').classList.remove('Objslide2romb');
-    document.querySelector('.earthcon').classList.remove('earthAppear');
-    document.querySelector('.contactInfo').classList.remove('conEnter');
-    document.querySelector('.earthcon').classList.remove('earthDown');
-    document.querySelector('.contactInfo').classList.remove('conUpward');
-    document.querySelector('.whitecube1').classList.remove('Objwhite');
 
-
-
-
-
+    slideHeading?.classList.remove('slide1Enter', 'slide1Leave', 'slide1Again', 'slide1Left', 'slide1Right', 'slide1Leave2');
+    slideParagraph?.classList.remove('slide1Enter', 'slide1Leave', 'slide1Again', 'slide1Left', 'slide1Right', 'slide1Leave2');
+    slideLink?.classList.remove('slide1Enter', 'slide1Leave', 'slide1Again', 'slide1Left', 'slide1Right', 'slide1Leave2');
+    sphereSm?.classList.remove('ballsLeft');
+    sphereMd?.classList.remove('ballsLeft');
+    sphereLg?.classList.remove('ballsLeft');
+    con1?.classList.remove('slide2Right', 'slide2Left');
+    con2?.classList.remove('slide2Right', 'slide2Left');
+    msLogo?.classList.remove('LogoRight');
+    darkRomb?.classList.remove('Objslide2Left', 'Objslide2romb');
+    darkCube1?.classList.remove('Objslide2Left');
+    earthCon?.classList.remove('earthAppear', 'earthDown');
+    contactInfo?.classList.remove('conEnter', 'conUpward');
+    whiteCube1?.classList.remove('Objwhite');
 }
 
 
@@ -424,61 +439,56 @@ new fullpage('#fullpage', {
 })();
 
 const scrollBtn = document.querySelector('.scrollDown');
-const scrollBtnText = scrollBtn.childNodes[scrollBtn.childNodes.length - 1];
-const scrollBtnSvg = scrollBtn.querySelector('svg');
 
+if (scrollBtn) {
+    const scrollBtnText = scrollBtn.childNodes[scrollBtn.childNodes.length - 1];
+    const scrollBtnSvg = scrollBtn.querySelector('svg');
 
-scrollBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+    scrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
 
-    const current = fullpage_api.getActiveSection().index;
-    const totalSections = 5;
+        const current = fullpage_api.getActiveSection().index;
+        const totalSections = 5;
 
-    if (current === totalSections - 1) {
+        if (current === totalSections - 1) {
+            fullpage_api.moveTo(1);
+        } else {
+            fullpage_api.moveSectionDown();
+        }
+    });
+}
 
-        fullpage_api.moveTo(1);
-    } else {
+const contact = document.querySelector('.earthcon');
 
-        fullpage_api.moveSectionDown();
-    }
-});
+if (contact && 'IntersectionObserver' in window) {
+    const Observer = new IntersectionObserver((entries) => {
+        if (!scrollBtn) return;
 
-
-
-const contact = document.querySelector(".earthcon");
-
-const Observer = new IntersectionObserver((entries) => {
-
-    if (entries[0].isIntersecting) {
-        scrollBtn.setAttribute("href", "#hero");
-        document.querySelector('.scrollDown').classList.add("scrollUp");
-        document.querySelector('.scrollDown').innerHTML = `
+        if (entries[0].isIntersecting) {
+            scrollBtn.setAttribute('href', '#hero');
+            scrollBtn.classList.add('scrollUp');
+            scrollBtn.innerHTML = `
     Back to Top
    <svg class="arrowabt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down preview-icon"><path d="m6 9 6 6 6-6"/></svg>
     `;
-        if (window.innerWidth > 992 && !document.documentElement.classList.contains('fp-responsive')) {
-            document.querySelector('.aboutme')?.classList.add('fadeDown');
-            document.querySelector('.aboutinfo')?.classList.add('fadeDown');
-            document.querySelector('.darkcube2')?.classList.add('ObjDown');
-            document.querySelector('.purpleromb2')?.classList.add('moveUpr2');
-            document.querySelector('.heroContent').style.transform = "translateY(0px)";
-            document.querySelector('.Workstation').style.transform = "translateY(0px)";
-            document.querySelector('.purpleromb1')?.classList.remove('moveUp');
-        }
-    } else {
-        scrollBtn.setAttribute("href", "");
-        document.querySelector('.scrollDown').classList.remove("scrollUp");
-
-        document.querySelector('.scrollDown').innerHTML = `
-    
+            if (window.innerWidth > 992 && !document.documentElement.classList.contains('fp-responsive')) {
+                addClassTo('.aboutme', 'fadeDown');
+                addClassTo('.aboutinfo', 'fadeDown');
+                addClassTo('.darkcube2', 'ObjDown');
+                addClassTo('.purpleromb2', 'moveUpr2');
+                setTransform('.heroContent', 'translateY(0px)');
+                setTransform('.Workstation', 'translateY(0px)');
+                removeClassFrom('.purpleromb1', 'moveUp');
+            }
+        } else {
+            scrollBtn.setAttribute('href', '');
+            scrollBtn.classList.remove('scrollUp');
+            scrollBtn.innerHTML = `
    <svg class="arrowabt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down preview-icon"><path d="m6 9 6 6 6-6"/></svg>
                 Scroll Down
     `;
+        }
+    }, {});
 
-    }
-
-
-
-}, {})
-
-Observer.observe(contact);
+    Observer.observe(contact);
+}
