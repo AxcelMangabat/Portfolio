@@ -341,20 +341,20 @@ div.fp-watermark {
 
 .scrollDown svg {
     color: white;
-    transform: rotate(180deg);
     margin-right: 0.4rem;
     width: 20px;
     height: auto;
+    transform: rotate(90deg);
     transition: transform 0.4s ease;
 }
 
 .scrollDown:hover svg {
-    transform: translateX(-1rem) rotate(180deg) !important;
+    transform: translateX(-1rem) rotate(90deg);
     transition: 0.3s ease;
 }
 
 .scrollUp:hover svg {
-    transform: translateX(1rem) !important;
+    transform: translateX(1rem) rotate(-90deg) !important;
     transition: 0.3s ease;
 }
 
@@ -364,7 +364,7 @@ div.fp-watermark {
 }
 
 .scrollDown.scrollUp svg {
-    transform: rotate(0deg);
+    transform: rotate(-90deg);
 }
 
 .navScroll::before {
