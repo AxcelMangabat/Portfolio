@@ -946,7 +946,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     position: relative;
     width: 100%;
     height: 100dvh;
-    background-image: linear-gradient(rgba(20, 20, 22, 0.14), rgba(20, 20, 22, 0.14)), url("./assets/images/background2.png");
+    background-image:linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -973,8 +973,11 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     text-align: center;
 }
 
+.aboutme .aboutEyebrow,
+.experience .skillsEyebrow,
 .certificateEyebrow,
-.certificateProvider {
+.certificateProvider,
+.MseyeBrow {
     color: #b66cff;
     font-family: 'Source Sans 3', sans-serif;
     font-size: 0.85rem;
@@ -1247,7 +1250,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     align-items: center;
     width: 100%;
     height: 100dvh;
-    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background.png");
+    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background2.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1396,21 +1399,16 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     line-height: 2.9rem;
     transition: 0.3s ease;
 }
-
-.slide2 h5 {
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    text-transform: uppercase;
-    color: darkgrey;
-    letter-spacing: 0.1rem;
-}
-
 .slide2 p {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 18px;
     color: #f0f8ff;
     font-weight: 400;
+}
+.slide2 p:first-of-type{
+   br{
+    display: none;
+   }
 }
 
 .slide2 a {
@@ -1987,7 +1985,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     }
 
     .aboutme {
-        margin: 40.2px 0px 40.2px 1rem;
+        margin: 1.5rem 0 1.5rem 1rem;
         width: 30rem;
     }
 
@@ -2027,6 +2025,24 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
 
     .experience p {
         font-size: 1rem;
+    }
+
+    .experience .skillsEyebrow {
+        margin-bottom: 0.75rem;
+    }
+
+    .experience .skillsEyebrow br {
+        display: none;
+    }
+
+    .skillBox {
+        width: min(94vw, 52rem);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin: 1.25rem auto 0;
+    }
+
+    .skillIcons {
+        margin: 0 0.5rem 1rem;
     }
 
     #Certificates .certificateTitle {
@@ -2135,6 +2151,10 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
         background-repeat: no-repeat;
     }
 
+    #Certificates {
+        background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background.png");
+    }
+
 
     .heroContent,
     .heroContent2,
@@ -2193,23 +2213,23 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     #Certificates {
         height: auto !important;
         min-height: 100dvh;
-        padding: 6rem 0 3rem;
+        padding: 5rem 0 2rem;
     }
 
     #Certificates .fp-overflow {
         height: auto !important;
-        min-height: calc(100dvh - 9rem);
+        min-height: calc(100dvh - 7rem);
         overflow: visible;
     }
 
     .certificateContent {
         width: min(90%, 40rem);
-        gap: 1.25rem;
+        gap: 1rem;
         padding: 0;
     }
 
     .certificateGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
         gap: 1rem;
     }
 
@@ -2244,6 +2264,12 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
         background-size: cover !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
+    }
+
+    #Certificates,
+    #projects {
+        background-color: #0d0d0e;
+        background-image: none;
     }
 
 
@@ -2537,7 +2563,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
         overflow-y: hidden;
         display: flex;
         justify-content: end;
-        gap: 5rem;
+        gap: 2.5rem;
         align-items: center;
         flex-direction: column-reverse !important;
         height: 44.75rem !important;
@@ -2581,6 +2607,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     .heroContent2 object {
         width: auto;
         height: auto;
+        margin-top: -30rem;
     }
 
     .purpleromb1 {
@@ -2592,6 +2619,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     #about {
         padding: 50px 0;
         height: 40rem !important;
+        margin-top: -3rem;
     }
 
     #about .fp-overflow {
@@ -2664,9 +2692,9 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     }
 
     .skillBox {
-        width: 94%;
-        grid-template-columns: repeat(3, 1fr);
-        margin: 5rem 0 0 0;
+        width: min(94vw, 52rem);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin: 2rem auto 0;
     }
 
     .skillIcons i {
@@ -2682,20 +2710,27 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     #skills {
         height: auto;
         padding: 0;
+        margin-top: -4rem;
     }
 
     #skills .fp-overflow {
         margin-bottom: -4rem;
     }
 
+    #Certificates{
+        margin-top: -4rem;
+        margin-bottom: -5rem;
+    }
+
 
     #projects {
-        padding: 50px 0;
-        height: 35rem !important;
+        height: 45rem !important;
+        margin-top: 3rem;
+        padding-top: 5rem;
     }
 
     #projects .fp-slidesContainer {
-        margin-top: -5rem;
+        margin-top: -1rem;
     }
 
     #projects .fp-slidesContainer {
@@ -2796,7 +2831,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     }
 
     #contact {
-        padding: 50px 0;
+        padding-top: 5rem;
         height: 50rem !important;
     }
 
