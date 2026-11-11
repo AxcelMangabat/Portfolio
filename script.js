@@ -1,20 +1,25 @@
 const navScroll = document.querySelector(".navScroll");
-let inProjects = false;
+let isNavNavigation = false;
+const navLinks = navScroll ? Array.from(navScroll.querySelectorAll("a")) : [];
+const navIndicatorClasses = navLinks.map((_, index) => `hovertonav${index + 1}`);
+
+function setActiveNav(index) {
+    if (!navScroll) return;
+    navScroll.classList.remove(...navIndicatorClasses);
+    navScroll.classList.add(`hovertonav${index + 1}`);
+}
 
 if (navScroll) {
-    const navLinks = navScroll.querySelectorAll("a");
-
     navLinks.forEach((link, index) => {
-        link.addEventListener("click", () => {
-            navScroll.classList.remove(
-                "hovertonav1",
-                "hovertonav2",
-                "hovertonav3",
-                "hovertonav4",
-                "hovertonav5"
-            );
-
-            navScroll.classList.add(`hovertonav${index + 1}`);
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+            setActiveNav(index);
+            isNavNavigation = true;
+            try {
+                fullpage_api.moveTo(index + 1);
+            } finally {
+                isNavNavigation = false;
+            }
         });
     });
 }
@@ -81,6 +86,33 @@ const sectionAnimations = {
     },
 
     "2-3-down": () => {
+        addClassTo('.experience', 'expFadeUp2');
+        document.querySelectorAll('.skillIcons').forEach(el => {
+            el.classList.add('iconUp2');
+        });
+    },
+
+    "3-2-up": () => {
+        addClassTo('.experience', 'expFadeUp');
+        document.querySelectorAll('.skillIcons').forEach(el => {
+            void el.offsetWidth;
+            el.classList.add('iconFadeIn');
+        });
+    },
+
+    "3-4-down": () => {
+        addClassTo('.slide1 h1', 'slide1Enter');
+        addClassTo('.slide1 p', 'slide1Enter');
+        addClassTo('.slide1 a', 'slide1Enter');
+    },
+
+    "4-3-up": () => {
+        addClassTo('.slide1 h1', 'slide1Leave2');
+        addClassTo('.slide1 p', 'slide1Leave2');
+        addClassTo('.slide1 a', 'slide1Leave2');
+    },
+
+    "2-4-down": () => {
         document.querySelectorAll('.skillIcons').forEach(el => {
             el.classList.add('iconUp2');
         });
@@ -91,7 +123,7 @@ const sectionAnimations = {
         addClassTo('.slide1 a', 'slide1Enter');
     },
 
-    "3-2-up": () => {
+    "4-2-up": () => {
         addClassTo('.slide1 h1', 'slide1Leave2');
         addClassTo('.slide1 p', 'slide1Leave2');
         addClassTo('.slide1 a', 'slide1Leave2');
@@ -101,7 +133,7 @@ const sectionAnimations = {
             el.classList.add('iconFadeIn');
         });
     },
-    "3-4-down": () => {
+    "4-5-down": () => {
         addClassTo('.slide1 h1', 'slide1Leave');
         addClassTo('.slide1 p', 'slide1Leave');
         addClassTo('.slide1 a', 'slide1Leave');
@@ -110,7 +142,7 @@ const sectionAnimations = {
         addClassTo('.earthcon', 'earthAppear');
         addClassTo('.contactInfo', 'conEnter');
     },
-    "4-3-up": () => {
+    "5-4-up": () => {
         addClassTo('.slide1 h1', 'slide1Again');
         addClassTo('.slide1 p', 'slide1Again');
         addClassTo('.slide1 a', 'slide1Again');
@@ -119,7 +151,7 @@ const sectionAnimations = {
         addClassTo('.contactInfo', 'conUpward');
         addClassTo('.whitecube1', 'Objwhite');
     },
-    "4-1-up": () => {
+    "5-1-up": () => {
         addClassTo('.slide1 h1', 'slide1Again');
         addClassTo('.slide1 p', 'slide1Again');
         addClassTo('.slide1 a', 'slide1Again');
@@ -133,6 +165,10 @@ const sectionAnimations = {
 
 
 function resetAnimations() {
+    setTransform('.heroContent', '');
+    setTransform('.Workstation', '');
+    removeClassFrom('.purpleromb1', 'moveUp');
+
     const aboutMe = document.querySelector('.aboutme');
     const aboutInfo = document.querySelector('.aboutinfo');
     const darkCube2 = document.querySelector('.darkcube2');
@@ -146,12 +182,12 @@ function resetAnimations() {
     const sphereLg = document.querySelector('.sphereLg');
     const con1 = document.querySelector('.con1');
     const con2 = document.querySelector('.con2');
-    const msLogo = document.querySelector('.MsLogo');
     const darkRomb = document.querySelector('.darkromb');
     const darkCube1 = document.querySelector('.darkcube1');
     const earthCon = document.querySelector('.earthcon');
     const contactInfo = document.querySelector('.contactInfo');
     const whiteCube1 = document.querySelector('.whitecube1');
+    const certificateTitle = document.querySelector('.certificateTitle');
 
     aboutMe?.classList.remove('fadeUp', 'fadeDown', 'fadeUp2', 'fadeDown2');
     aboutInfo?.classList.remove('fadeUp', 'fadeDown', 'fadeUp2', 'fadeDown2');
@@ -171,12 +207,15 @@ function resetAnimations() {
     sphereLg?.classList.remove('ballsLeft');
     con1?.classList.remove('slide2Right', 'slide2Left');
     con2?.classList.remove('slide2Right', 'slide2Left');
-    msLogo?.classList.remove('LogoRight');
     darkRomb?.classList.remove('Objslide2Left', 'Objslide2romb');
     darkCube1?.classList.remove('Objslide2Left');
     earthCon?.classList.remove('earthAppear', 'earthDown');
     contactInfo?.classList.remove('conEnter', 'conUpward');
     whiteCube1?.classList.remove('Objwhite');
+    certificateTitle?.classList.remove('certificateEnter', 'certificateLeave');
+    document.querySelectorAll('.certificateCard').forEach(el => {
+        el.classList.remove('certificateCardEnter', 'certificateCardLeave');
+    });
 }
 
 
@@ -203,11 +242,12 @@ new fullpage('#fullpage', {
     onLeave: function (origin, destination, direction) {
         
         if (window.innerWidth <= 992 || document.documentElement.classList.contains('fp-responsive')) {
+            setActiveNav(destination.index);
             resetAnimations();
             return;
         }
 
-        if (origin.index === 3) {
+        if (origin.index === 4 && !isNavNavigation) {
 
             const slides = origin.item.querySelectorAll('.slide');
             const totalSlides = slides.length;
@@ -231,13 +271,7 @@ new fullpage('#fullpage', {
             }
         }
 
-        inProjects = false;
-        navScroll.classList.remove(
-            "hovertonav1", "hovertonav2", "hovertonav3", "hovertonav4", "hovertonav5"
-        );
-        navScroll.classList.add(`hovertonav${destination.index + 1}`);
-
-
+        setActiveNav(destination.index);
 
         resetAnimations();
 
@@ -245,6 +279,26 @@ new fullpage('#fullpage', {
         const animate = sectionAnimations[key];
         if (animate) animate();
 
+        if (origin.item.id === 'Certificates') {
+            addClassTo('.certificateTitle', 'certificateLeave');
+            document.querySelectorAll('.certificateCard').forEach(el => {
+                el.classList.add('certificateCardLeave');
+            });
+        }
+        if (destination.item.id === 'Certificates') {
+            addClassTo('.certificateTitle', 'certificateEnter');
+            document.querySelectorAll('.certificateCard').forEach(el => {
+                el.classList.add('certificateCardEnter');
+            });
+        }
+
+    },
+    afterLoad: function (origin, destination) {
+        setActiveNav(destination.index);
+        if (['about', 'skills', 'Certificates'].includes(destination.item.id)) {
+            const overflow = destination.item.querySelector('.fp-overflow');
+            if (overflow) overflow.scrollTop = 0;
+        }
     },
     onSlideLeave: function (section, origin, destination, direction) {
         if (window.innerWidth <= 992 || document.documentElement.classList.contains('fp-responsive')) {
@@ -253,7 +307,7 @@ new fullpage('#fullpage', {
             
         }
         resetAnimations();
-        if (section.index === 3) {
+        if (section.index === 4) {
 
             if (origin.index === 0 && destination.index === 1) {
                 document.querySelector('.slide1 h1').classList.add('slide1Left');
@@ -268,7 +322,6 @@ new fullpage('#fullpage', {
 
                 document.querySelector('.con1').classList.add('slide2Right');
                 document.querySelector('.con2').classList.add('slide2Right');
-                document.querySelector('.MsLogo').classList.add('LogoRight');
             }
             if (origin.index === 1 && destination.index === 0) {
                 document.querySelector('.slide1 h1').classList.add('slide1Right');
@@ -294,8 +347,6 @@ new fullpage('#fullpage', {
     const CONFIG = {
         textureUrl: './assets/images/earthmap1k.jpg',
         autoRotateSpeed: -0.15,
-        lightIntensity: 1.1,
-        ambientIntensity: 0.25,
         sphereSegments: 64,
         cameraDistance: 2.6
     };
@@ -441,14 +492,11 @@ new fullpage('#fullpage', {
 const scrollBtn = document.querySelector('.scrollDown');
 
 if (scrollBtn) {
-    const scrollBtnText = scrollBtn.childNodes[scrollBtn.childNodes.length - 1];
-    const scrollBtnSvg = scrollBtn.querySelector('svg');
-
     scrollBtn.addEventListener('click', (e) => {
         e.preventDefault();
 
         const current = fullpage_api.getActiveSection().index;
-        const totalSections = 5;
+        const totalSections = 6;
 
         if (current === totalSections - 1) {
             fullpage_api.moveTo(1);
