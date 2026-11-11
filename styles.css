@@ -946,7 +946,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     position: relative;
     width: 100%;
     height: 100dvh;
-    background-image:linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background.png");
+    background-image: linear-gradient(rgba(20, 20, 22, 0.1), rgba(20, 20, 22, 0.1)), url("./assets/images/background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1399,16 +1399,18 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     line-height: 2.9rem;
     transition: 0.3s ease;
 }
+
 .slide2 p {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 18px;
     color: #f0f8ff;
     font-weight: 400;
 }
-.slide2 p:first-of-type{
-   br{
-    display: none;
-   }
+
+.slide2 p:first-of-type {
+    br {
+        display: none;
+    }
 }
 
 .slide2 a {
@@ -1852,12 +1854,12 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     transition: 0.4s ease;
 }
 
-#Igacc{
+#Igacc {
     color: white;
     transition: 0.3s ease;
 }
 
-#Igacc:hover{
+#Igacc:hover {
     color: orange;
     transition: 0.3s ease;
 }
@@ -2488,6 +2490,22 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
 
 @media (max-width: 500px) {
 
+
+
+
+    .aboutme .aboutEyebrow,
+    .experience .skillsEyebrow,
+    .certificateEyebrow,
+    .certificateProvider,
+    .MseyeBrow {
+        font-size: 0.7rem;
+
+    }
+
+
+
+
+
     #fullpage {
         height: auto;
     }
@@ -2651,6 +2669,12 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
         letter-spacing: 0;
     }
 
+    .aboutinfo p:nth-child(1){
+        br{
+            display: none;
+        }
+    }
+
     .aboutinfo {
 
         width: 94%;
@@ -2717,7 +2741,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
         margin-bottom: -4rem;
     }
 
-    #Certificates{
+    #Certificates {
         margin-top: -4rem;
         margin-bottom: -5rem;
     }
