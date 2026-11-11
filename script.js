@@ -492,3 +492,10 @@ if (contact && 'IntersectionObserver' in window) {
 
     Observer.observe(contact);
 }
+
+
+const navHeader = document.querySelector(".navHeader");
+
+window.addEventListener("scroll", () => {
+    navHeader.classList.toggle("scrolled", window.scrollY > 20);
+});

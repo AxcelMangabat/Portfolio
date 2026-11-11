@@ -1909,9 +1909,18 @@ div.fp-watermark {
         height: 100%;                
     }
 
-    .navHeader {
-        padding: 0.5rem;
+    .navHeader.scrolled{
+        background-color: #191818cd;
+        margin-top: -0.5rem;
+        padding: 1.3rem 0.5rem;
+        transition: 0.5s ease;
+
     }
+    .navHeader{
+       transition: 1s ease;
+        padding: 1.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
 
     .navBar img {
         margin-left: -1rem;
@@ -2324,10 +2333,21 @@ div.fp-watermark {
         font-size: 0.8rem;
     }
 
+    #skills{
+        height: auto;
+        padding:0;
+    }
+    #skills .fp-overflow{
+       margin-bottom: -4rem;
+    }
+
 
     #projects {
         padding: 50px 0;
-        height: 50rem !important;
+        height: 35rem !important;
+    }
+    #projects .fp-slidesContainer{
+       margin-top: -5rem;
     }
 
     #projects .fp-slidesContainer {
@@ -2442,9 +2462,7 @@ div.fp-watermark {
             display: none;
         }
     }
-    .contactInfo p span{
-        margin-bottom: 1rem;
-    }
+    
     .contactInfo a{
          margin-left: 0.2rem;
         margin-right: 0.2rem;
