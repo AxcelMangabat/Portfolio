@@ -1407,11 +1407,6 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     font-weight: 400;
 }
 
-.slide2 p:first-of-type {
-    br {
-        display: none;
-    }
-}
 
 .slide2 a {
     font-family: 'Source Sans 3', sans-serif;
@@ -2492,6 +2487,11 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
 
 
 
+    .slide2 p:first-of-type {
+        br {
+            display: none;
+        }
+    }
 
     .aboutme .aboutEyebrow,
     .experience .skillsEyebrow,
@@ -2669,8 +2669,8 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
         letter-spacing: 0;
     }
 
-    .aboutinfo p:nth-child(1){
-        br{
+    .aboutinfo p:nth-child(1) {
+        br {
             display: none;
         }
     }
