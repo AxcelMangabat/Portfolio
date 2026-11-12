@@ -1897,22 +1897,19 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    width: min(100%, 36rem);
+    min-width: 0;
+    gap: 1rem;
     z-index: 10;
 }
 
 .contactInfo p {
     font-family: 'Source Sans 3', sans-serif;
-    font-size: 18px;
-    color: #f0f8ff;
-
-}
-
-.contactInfo h2 {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: #f0f8ff;
-    transition: 0.4s ease;
+    width: 100%;
+    margin: 0;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    line-height: 1.55;
+    color: grey;
 }
 
 .ig:hover h2 {
@@ -2026,6 +2023,93 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     to {
         bottom: -100%;
     }
+}
+
+
+.contactTitle{
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+    width: 100%;
+    margin: 0;
+    font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+    line-height: 1.15;
+    color: white;
+}
+.contactAccent{
+    color: #924AF0;
+    font-style: italic;
+}
+
+.contactsubHead2{
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.contactTitle span{
+    margin-right: -0.4rem;
+}
+
+.contactEmailBox{
+    display: grid;
+    grid-template-columns: 0.3fr minmax(0, 1fr);
+    align-items: stretch;
+    gap: 0.75rem;
+    width: min(100%, 26rem);
+    min-width: 0;
+    padding: 0.6rem 0.75rem;
+    margin: 0;
+    border: 1px solid rgba(146, 74, 240, 0.3);
+    border-radius: 0.6rem;
+    background: rgba(12, 11, 18, 0.82);
+}
+.emailLeft{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0.75rem;
+    border-right: 1px solid rgba(146, 74, 240, 0.28);
+}
+ .emailLeft i{
+    padding: 0.4rem;
+    border-radius: 0.25rem;
+    background: rgba(146, 74, 240, 0.16);
+    color: #a873ff;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.emailRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    gap: 0.2rem;
+}
+
+.emailLabel {
+    color: #b66cff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+}
+
+.emailRight a {
+    display: block;
+    min-width: 0;
+    margin: 0;
+    color: white;
+}
+
+.emailRight h2 {
+    margin: 0;
+    color: #f0f8ff;
+    font-size: clamp(0.78rem, 3.3vw, 0.95rem);
+    font-weight: 600;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    transition: color 0.4s ease;
 }
 
 @media(max-width: 64rem) {
@@ -2168,13 +2252,23 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
 
     #contact .fp-overflow {
         justify-content: start !important;
-        margin: 0 0 0 1rem;
+        gap: clamp(1rem, 3vw, 2rem);
+        margin-left: 0;
+        padding: 0 clamp(1rem, 4vw, 3rem);
     }
 
     .earthcon {
         position: relative;
-        width: 450px;
+        flex: 0 1 43%;
+        width: min(42vw, 28rem);
         height: auto;
+        min-height: 0;
+        aspect-ratio: 1.2;
+    }
+
+    .contactInfo {
+        flex: 1 1 0;
+        width: min(52%, 34rem);
     }
 
     #globe-container {
@@ -2303,6 +2397,43 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
 
     .certificatePreview {
         aspect-ratio: 1.7;
+    }
+
+    #contact {
+        height: auto !important;
+        min-height: 100dvh;
+    }
+
+    #contact .fp-overflow {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 1.5rem;
+        margin: 0 !important;
+        padding: 6rem 1rem 3rem !important;
+    }
+
+    .earthcon {
+        flex: none;
+        width: min(90vw, 28rem);
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 1.2;
+    }
+
+    .contactInfo {
+        flex: none;
+        width: min(92%, 34rem);
+        align-items: center;
+        text-align: center;
+    }
+
+    .contactInfo p br {
+        display: none;
+    }
+
+    .contactEmailBox {
+        text-align: left;
     }
 
 }
@@ -2524,21 +2655,33 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     }
 
     #contact .fp-overflow {
-        justify-content: end !important;
+        justify-content: center !important;
+        align-items: center !important;
         flex-direction: column-reverse !important;
-        margin: 0 0 0 1rem;
+        gap: 1.5rem;
+        margin: 0 !important;
+        padding: 6rem 1rem 3rem !important;
     }
 
     #contact {
-        padding: 50px 0;
-        height: 52.875rem !important;
+        padding: 0 !important;
+        height: auto !important;
+        min-height: 100dvh;
     }
 
 
     .earthcon {
         position: relative;
-        width: 450px;
+        width: min(90vw, 28rem);
         height: auto;
+        min-height: 0;
+        aspect-ratio: 1.2;
+    }
+
+    .contactInfo {
+        width: min(92%, 34rem);
+        align-items: center;
+        text-align: left;
     }
 
     #globe-container {
@@ -2923,41 +3066,43 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     #contact .fp-overflow {
         justify-content: start !important;
         flex-direction: column-reverse !important;
-        margin: 0 0 0 1rem;
+        margin: 0 !important;
         padding: 0 1rem;
     }
 
     #contact {
-        padding-top: 5rem;
-        height: 50rem !important;
+        padding: 0 !important;
+        height: auto !important;
+        min-height: 100dvh;
     }
 
     .contactInfo {
-        width: 350px;
+        width: min(92%, 34rem);
+        margin: 0 auto;
     }
 
     .contactInfo p {
-        margin-left: 0.2rem;
-        margin-right: 0.2rem;
-
         br {
             display: none;
         }
     }
 
-    .contactInfo a {
+    #Igacc {
+        display: inline-block;
         margin-left: 0.2rem;
         margin-right: 0.2rem;
     }
 
     .earthcon {
         position: relative;
-        width: 450px;
+        width: min(90vw, 28rem);
         height: auto;
+        min-height: 0;
+        aspect-ratio: 1.2;
     }
 
     .contactInfo h2 {
-        font-size: 1.5rem !important;
+        font-size: 1rem !important;
     }
 
     #globe-container {
@@ -3133,6 +3278,8 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
     
     #contact {
         padding: 0 !important;
+        height: auto !important;
+        min-height: 100dvh;
     }
 
     #contact .fp-overflow {
@@ -3145,7 +3292,7 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
 
     .contactInfo {
         width: 92%;
-        max-width: 400px;
+        max-width: 34rem;
         margin: 0 auto;
     }
 }
