@@ -103,14 +103,85 @@ div.fp-watermark {
     transition: 0.6s ease;
 }
 
-#githubIcon {
+.socialMenu {
     position: fixed;
     z-index: 90;
-    font-size: 1.875rem;
-    color: #f0f8ff;
+    width: 2.5rem;
+    height: 2.5rem;
     bottom: 4%;
     left: 3%;
+}
 
+.socialMenuToggle {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    color: #f0f8ff;
+    background: transparent;
+    cursor: pointer;
+}
+
+#githubIcon {
+    font-size: 1.875rem;
+    transition: transform 0.35s ease;
+}
+
+.social-menu-open .socialMenuToggle #githubIcon {
+    transform: rotate(180deg);
+}
+
+.socialMenuLink {
+    position: absolute;
+    display: flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #141416;
+    background-color: #f0f8ff;
+    font-size: 1.25rem;
+    left: -0.125rem;
+    bottom: -0.125rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(0, 0) scale(0.6);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease, visibility 0s linear 0.4s;
+}
+
+.social-menu-open .socialMenuLink {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: var(--socialMenuDelay, 0s), var(--socialMenuDelay, 0s), 0s;
+}
+
+.social-menu-open .socialMenuLinkGithub {
+    transform: translate(-0.1rem, -3.75rem) scale(1);
+    --socialMenuDelay: 0s;
+}
+
+.social-menu-open .socialMenuLinkInstagram {
+    transform: translate(3rem, -2.4rem) scale(1);
+    --socialMenuDelay: 0.05s;
+}
+
+.social-menu-open .socialMenuLinkEmail {
+    transform: translate(4rem, 0.5rem) scale(1);
+    --socialMenuDelay: 0.1s;
+}
+
+.socialMenuLink:focus-visible,
+.socialMenuToggle:focus-visible {
+    outline: 2px solid #f0f8ff;
+    outline-offset: 4px;
 }
 
 #fullpage {
@@ -2541,11 +2612,13 @@ html:not(.fp-responsive) #Certificates .fp-overflow {
         display: none;
     }
 
+    .socialMenu {
+        left: 0.25rem;
+        bottom: 4%;
+    }
+
     #githubIcon {
         font-size: 1.5rem;
-        left: 2rem;
-        top: auto;
-        bottom: 4%;
     }
 
     .navHeader {

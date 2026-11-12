@@ -1,7 +1,28 @@
 const navScroll = document.querySelector(".navScroll");
+const socialMenuToggle = document.querySelector(".socialMenuToggle");
+const socialMenuLinks = document.querySelectorAll(".socialMenuLink");
 let isNavNavigation = false;
 const navLinks = navScroll ? Array.from(navScroll.querySelectorAll("a")) : [];
 const navIndicatorClasses = navLinks.map((_, index) => `hovertonav${index + 1}`);
+
+if (socialMenuToggle) {
+    const socialMenuIcon = socialMenuToggle.querySelector("#githubIcon");
+
+    socialMenuToggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        const isOpen = socialMenuToggle.getAttribute("aria-expanded") !== "true";
+
+        socialMenuToggle.setAttribute("aria-expanded", String(isOpen));
+        socialMenuToggle.setAttribute("aria-label", isOpen ? "Close social links" : "Open social links");
+        document.body.classList.toggle("social-menu-open", isOpen);
+        socialMenuLinks.forEach((link) => link.setAttribute("aria-hidden", String(!isOpen)));
+
+        if (socialMenuIcon) {
+            socialMenuIcon.classList.toggle("fa-comments", !isOpen);
+            socialMenuIcon.classList.toggle("fa-xmark", isOpen);
+        }
+    });
+}
 
 function setActiveNav(index) {
     if (!navScroll) return;
